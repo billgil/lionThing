@@ -11,15 +11,12 @@ export class TimerButton extends LionButton {
                 }
                 .btn {
                     background-color: blue;
+                    color: white;
+                    text-transform: uppercase
                 }
             `
         ]
     }
 
-    render() {
-        return html`
-            <lion-button>Button Text</lion-button>
-        `;
-      }
 }
 customElements.define('timer-button', TimerButton);

@@ -1,7 +1,6 @@
 import { LitElement, html, css } from "lit-element"
 import '../timer/timer.component.js'
 import '@lion/input/lion-input.js'
-import '@lion/button/lion-button.js';
 import '../button/button.component.js'
 
 class TimerMaker extends LitElement {
@@ -58,13 +57,10 @@ class TimerMaker extends LitElement {
   render() {
     return html`
       <div class="timer-maker">
-        <timer-button @click=${this.createNewTimer}>hey koi boy</timer-button>
-        <lion-button class="timer-maker__button" @click=${this.createNewTimer}>Start Timer</lion-button>
-
-
         <lion-input class="timer-maker__input" @keyup=${this.titleUpdated} placeholder="Timer Name" name="timer-title" type="text"></lion-input>
         <lion-input class="timer-maker__input" @keyup=${this.secondsUpdated} placeholder="Amount of seconds" name="timer-count-seconds" type="number"></lion-input>
-        </div>
+        <timer-button @click=${this.createNewTimer}>Start Timer</timer-button>
+      </div>
 
       <div class="timers">
         ${this.activeTimers.map(
