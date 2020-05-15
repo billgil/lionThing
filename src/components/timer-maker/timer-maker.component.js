@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit-element"
 import '../timer/timer.component.js'
-import '@lion/input/lion-input.js'
 import '../button/button.component.js'
+import '../input/input.component.js'
 
 class TimerMaker extends LitElement {
   static get properties() {
@@ -18,7 +18,23 @@ class TimerMaker extends LitElement {
     this.timerTitle = ''
     this.secondsToCount = 0
     this.timerIdGen = 0
-    this.activeTimers = []
+    this.activeTimers = [
+      {
+        title: 'Clock 0',
+        seconds: 3600,
+        id: 0
+      },
+      {
+        title: 'Clock 1',
+        seconds: 7200,
+        id: 1
+      },
+      {
+        title: 'Clock 2',
+        seconds: 10800,
+        id: 2
+      }
+    ]
   }
   
   static get styles() {
@@ -32,23 +48,23 @@ class TimerMaker extends LitElement {
         display: flex;
         justify-content: space-around;
         margin: 0 auto;
-        max-width: 720px;
-        padding: 50px 20px;
+        max-width: 900px;
+        padding: 30px 20px;
         width: 100%;
       }
 
-      .timer-maker__input {
-        margin-bottom: 0;
-        max-width: 200px;
-      }
-
-      .timer-maker__button .btn {
-        background-color: #3398db;
+      timer-input {
+        border: none;
+        margin: 0 16px 0 0;
+        outline: none;
       }
 
       .timers {
         display: flex;
         flex-wrap: wrap;
+        margin: 0 auto;
+        max-width: 900px;
+        padding: 10px 50px 20px;
         width: 100%;
       }
     `
@@ -57,8 +73,8 @@ class TimerMaker extends LitElement {
   render() {
     return html`
       <div class="timer-maker">
-        <lion-input class="timer-maker__input" @keyup=${this.titleUpdated} placeholder="Timer Name" name="timer-title" type="text"></lion-input>
-        <lion-input class="timer-maker__input" @keyup=${this.secondsUpdated} placeholder="Amount of seconds" name="timer-count-seconds" type="number"></lion-input>
+        <timer-input class="timer-maker__input" @keyup=${this.titleUpdated} placeholder="Timer Name" name="timer-title" type="text"></timer-input>
+        <timer-input class="timer-maker__input" @keyup=${this.secondsUpdated} placeholder="Amount of seconds" name="timer-count-seconds" type="number"></timer-input>
         <timer-button @click=${this.createNewTimer}>Start Timer</timer-button>
       </div>
 
@@ -93,6 +109,8 @@ class TimerMaker extends LitElement {
 
   // remove timer is a custom event passed to each timer
   removeTimer(event) {
+    console.log(event.detail);
+    
     // filter all active timers unless the ID matches the ID passed by the event
     this.activeTimers = this.activeTimers.filter((timer) => timer.id !== event.detail)
   }

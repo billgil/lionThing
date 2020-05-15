@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element"
-import '@lion/button/lion-button.js';
+import '../button/button.component.js';
 
 class Timer extends LitElement {
   static get properties() {
@@ -7,6 +7,7 @@ class Timer extends LitElement {
       id: { type: Number },
 			timerTitle: { type: String },
       secondsToCount: { type: Number },
+      currentCount: { type: Number },
       isCountingDown: { type: Boolean },
       isCountComplete: { type: Boolean }
 		}
@@ -16,15 +17,18 @@ class Timer extends LitElement {
     super()
     this.isCountingDown = true
     this.isCountComplete = false
-    this.isActive = true
+    console.log('constructor');    
   }
 
   connectedCallback() {
+    this.currentCount = this.secondsToCount
+    console.log(`connectedCallback ${this.timerTitle}, currentCount = ${this.currentCount}`)
     super.connectedCallback()
     this.updateCount()
   }
 
   disconnectedCallback() {
+    console.log(`disconnectedCallback for ${this.timerTitle}`);
     this.isCountingDown = false
     this.isCountComplete = true
   }
@@ -34,7 +38,7 @@ class Timer extends LitElement {
       .timer {
           background-color: #F2CD0D;
           display: block;
-          margin: 0 10px 20px;
+          margin: 0 10px 20px 0;
           padding: 20px;
       }
       .timer.timer--active {
@@ -65,8 +69,10 @@ class Timer extends LitElement {
         <h2>${this.timerTitle}</h2>
         <p>${this.convertSecondsUI()}</p>
 
-        <lion-button @click=${this.removeTimer}>Delete</lion-button>
-        <lion-button @click=${this.toggleCountDown}>Pause</lion-button>
+        <div class="timer__buttons">
+          <timer-button class="timer__control" @click=${this.removeTimer}>Delete</timer-button>
+          <timer-button class="timer__control" @click=${this.toggleCountDown}>Pause</timer-button>
+        </div>
       </div>
     `
   }
@@ -74,7 +80,7 @@ class Timer extends LitElement {
   // returns seconds as HH-MM-SS user friendly format
   convertSecondsUI() {
     const date = new Date(null);
-    date.setSeconds(this.secondsToCount);
+    date.setSeconds(this.currentCount);
     const timeUI = date.toISOString().substr(11, 8);
     return timeUI
   }
@@ -88,6 +94,7 @@ class Timer extends LitElement {
   toggleCountDown() {
     // this pauses the timer
     this.isCountingDown = !this.isCountingDown
+    console.log(`${this.timerTitle} is counting down = ${this.isCountingDown}`);
   }
 
   updateCount() {
@@ -99,11 +106,11 @@ class Timer extends LitElement {
         
         // stop counter going below 0
         if (this.isCountingDown) {
-          this.secondsToCount = this.secondsToCount > 1 ? this.secondsToCount - 1 : 0;
+          this.currentCount = this.currentCount > 1 ? this.currentCount - 1 : 0;
         }
 
         // when counter hit 0 it stops counting down
-        if (this.secondsToCount === 0) {
+        if (this.currentCount === 0) {
           this.isCountComplete = true
           clearInterval(timerTick)
         }

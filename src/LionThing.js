@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
-import './timer-maker/timer-maker.component.js'
+import './components/timer-maker/timer-maker.component.js'
 
 export class LionThing extends LitElement {
 
