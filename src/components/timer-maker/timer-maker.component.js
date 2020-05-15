@@ -79,9 +79,15 @@ class TimerMaker extends LitElement {
       </div>
 
       <div class="timers">
+      ${console.log(this.activeTimers)}
         ${this.activeTimers.map(
           (timer) => html`
-            <timer-item @timer-deleted=${this.removeTimer} .timerID="${timer.id}" .timerTitle="${timer.title}" .secondsToCount="${timer.seconds}"></timer-item>
+            <timer-item 
+              @timer-deleted=${this.removeTimer} 
+              .timerID="${timer.id}" 
+              .timerTitle="${timer.title}" 
+              .secondsToCount="${timer.seconds}"
+            ></timer-item>
           `
         )}
       </div>
@@ -109,8 +115,6 @@ class TimerMaker extends LitElement {
 
   // remove timer is a custom event passed to each timer
   removeTimer(event) {
-    console.log(event.detail);
-    
     // filter all active timers unless the ID matches the ID passed by the event
     this.activeTimers = this.activeTimers.filter((timer) => timer.id !== event.detail)
   }

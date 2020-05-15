@@ -17,18 +17,15 @@ class Timer extends LitElement {
     super()
     this.isCountingDown = true
     this.isCountComplete = false
-    console.log('constructor')
   }
 
   connectedCallback() {
     this.currentCount = this.secondsToCount
-    console.log(`connectedCallback ${this.timerTitle}, currentCount = ${this.currentCount}`)
     super.connectedCallback()
     this.updateCount()
   }
 
   disconnectedCallback() {
-    console.log(`disconnectedCallback for ${this.timerTitle}`);
     this.isCountingDown = false
     this.isCountComplete = true
   }
@@ -94,7 +91,6 @@ class Timer extends LitElement {
   toggleCountDown() {
     // this pauses the timer
     this.isCountingDown = !this.isCountingDown
-    console.log(`${this.timerTitle} is counting down = ${this.isCountingDown}`);
   }
 
   updateCount() {
