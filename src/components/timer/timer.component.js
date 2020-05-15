@@ -17,7 +17,7 @@ class Timer extends LitElement {
     super()
     this.isCountingDown = true
     this.isCountComplete = false
-    console.log('constructor');    
+    console.log('constructor')
   }
 
   connectedCallback() {
