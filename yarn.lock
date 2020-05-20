@@ -4821,7 +4821,7 @@ json5@^2.1.2:
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.1.3.tgz#c9b0f7fa9233bfe5807fe66fcf3a5617ed597d43"
   integrity sha512-KXPvOm8K9IJKFM0bmdn8QXh7udDh1g/giieX0NLCaMnb4hEiVFqnop2ImTXCc5e0/oHz3LTqmHGtExn5hfMkOA==
   dependencies:
-    minimist "^1.2.5"
+    minimist "^0.2.1"
 
 jsonfile@^4.0.0:
   version "4.0.0"
@@ -4874,7 +4874,7 @@ karma-mocha@^1.0.0:
   resolved "https://registry.yarnpkg.com/karma-mocha/-/karma-mocha-1.3.0.tgz#eeaac7ffc0e201eb63c467440d2b69c7cf3778bf"
   integrity sha1-7qrH/8DiAetjxGdEDStpx883eL8=
   dependencies:
-    minimist "1.2.0"
+    minimist "0.2.1"
 
 karma-snapshot@^0.6.0:
   version "0.6.0"
@@ -5458,7 +5458,7 @@ meow@^3.7.0:
     decamelize "^1.1.2"
     loud-rejection "^1.0.0"
     map-obj "^1.0.1"
-    minimist "^1.1.3"
+    minimist "^0.2.1"
     normalize-package-data "^2.3.4"
     object-assign "^4.0.1"
     read-pkg-up "^1.0.1"
@@ -5551,14 +5551,14 @@ mkdirp@0.5.4:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.4.tgz#fd01504a6797ec5c9be81ff43d204961ed64a512"
   integrity sha512-iG9AK/dJLtJ0XNgTuDbSyNS3zECqDlAhnQW4CsNxBG3LQJBbHmRX1egw39DmtOdCAqY+dKXV+sgPgilNWUKMVw==
   dependencies:
-    minimist "^1.2.5"
+    minimist "^0.2.1"
 
 mkdirp@^0.5.1:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.5.tgz#d91cefd62d1436ca0f41620e251288d420099def"
   integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
   dependencies:
-    minimist "^1.2.5"
+    minimist "^0.2.1"
 
 mocha@^6.2.2:
   version "6.2.3"
@@ -5858,7 +5858,7 @@ optimist@^0.6.1:
   resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.6.1.tgz#da3ea74686fa21a19a111c326e90eb15a0196686"
   integrity sha1-2j6nRob6IaGaERwybpDrFaAZZoY=
   dependencies:
-    minimist "~0.0.1"
+    minimist "~0.2.1"
     wordwrap "~0.0.2"
 
 optionator@^0.8.3:
