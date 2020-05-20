@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit-element"
 import '../timer/timer.component.js'
 import '../button-create/button-create.component.js'
 import '../input/input.component.js'
+import '@lion/form/lion-form.js'
 
 class TimerMaker extends LitElement {
   static get properties() {
@@ -56,7 +57,19 @@ class TimerMaker extends LitElement {
 
   render() {
     return html`
+      <div style="padding:20px;background:#eee;text-align:center">
+        <lion-form>
+          <form>
+            <lion-fieldset name="fullName">
+              <lion-input label="First Name" name="firstName"></lion-input>
+            </lion-fieldset>
+          </form>
+        </lion-form>
+      </div>
+   
+
       <div class="timer-maker">
+
         <timer-input 
           id="first-input-focus"
           class="timer-maker__input" 
@@ -74,10 +87,7 @@ class TimerMaker extends LitElement {
           type="number"
         ></timer-input>
 
-        <timer-button-create 
-          @click=${this.createNewTimer}
-          part="create-timer-button"
-        >Start Timer</timer-button-create>
+        <timer-button-create @click=${this.createNewTimer}>Start Timer</timer-button-create>
       </div>
 
       <div class="timers">
