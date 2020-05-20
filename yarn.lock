@@ -832,6 +832,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@bundled-es-modules/message-format@6.0.4":
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@bundled-es-modules/message-format/-/message-format-6.0.4.tgz#232da6877adb960f6c8f598c72588a84352de147"
+  integrity sha512-NGUoPxqsBzDwvRhY3A3L/AhS1hzS9OWappfyDOyCwE7G3W4ua28gau7QwvJz7QzA6ArbAdeb8c1mLjvd1WUFAA==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -863,6 +868,107 @@
   integrity sha512-tAag0jEcjwH+P2quUfipd7liWCNX2F8NvYjQp2wtInsZxnMlypdw0FtAOLxtvvkO+GSRRbmNi8m/5y42PQJYCQ==
   dependencies:
     "@hapi/hoek" "^8.3.0"
+
+"@lion/button@^0.5.12":
+  version "0.5.12"
+  resolved "https://registry.yarnpkg.com/@lion/button/-/button-0.5.12.tgz#a4e2c0a1e2aa5935c5a377bfb1711695648afdd0"
+  integrity sha512-nlIE029TH27t5X//udhhjq0LwE9mWXxR9P1f/iIdFJG0qEeycjX0rQxdtAwqv2qd3PCOXY688B0edisHvd3cSQ==
+  dependencies:
+    "@lion/core" "0.5.2"
+
+"@lion/core@0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@lion/core/-/core-0.5.2.tgz#8742434ca5edab3a7b307e154dea8f325c1e573f"
+  integrity sha512-gkjuC8nmStS/KUAUmxfmoBdHnHv35kQHv99+cjpFQcIXlckBZDlePFb7R7e+LqP/oo4vl/sA8IXj6dB/Y5El9Q==
+  dependencies:
+    "@open-wc/dedupe-mixin" "^1.2.1"
+    "@open-wc/scoped-elements" "^1.0.3"
+    lit-element "^2.2.1"
+    lit-html "^1.0.0"
+
+"@lion/core@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@lion/core/-/core-0.6.0.tgz#d5954fdc28d2031c52802bbf15d1747c5aa4f5f6"
+  integrity sha512-OTmafJC1A7lxXEgEcaNr2nT0Q7Z9rSb/SJ4RuhiLx16Ahwrfd5OUxNgB9yMR+W+t3skSTTjPdIqclvo85GI5Gw==
+  dependencies:
+    "@open-wc/dedupe-mixin" "^1.2.1"
+    "@open-wc/scoped-elements" "^1.0.3"
+    lit-element "^2.2.1"
+    lit-html "^1.0.0"
+
+"@lion/field@0.12.2":
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/@lion/field/-/field-0.12.2.tgz#d7c418705ea85cca4aba088b054f971d265318d5"
+  integrity sha512-mlCYNEd4bSDd95uOeRpVHnUIb7M0HouWf3l5VNaidHkRXYry5bLpWVF2hFPuzxA7B7rc73wCTswK3NwuI87q7g==
+  dependencies:
+    "@lion/core" "0.5.2"
+    "@lion/validate" "0.9.2"
+
+"@lion/field@0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@lion/field/-/field-0.13.0.tgz#cbd6a0b93dfbbbf3994ccdef02f1f5561ee25c40"
+  integrity sha512-UY2Dtka6ePMSQKApL8GLOyhxj2Gd5kFrPCoUng6U6TyhN3onOxYqgMAdMh/kJG4nM/eFcCZ7Am4YZxyiXeUiOQ==
+  dependencies:
+    "@lion/core" "0.6.0"
+    "@lion/validate" "0.10.0"
+
+"@lion/fieldset@0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@lion/fieldset/-/fieldset-0.11.0.tgz#4e745196d2f4f6df8b9db97edfd1f6bb9b17994c"
+  integrity sha512-nqk4gKyIeUN+phALYbEuTMSnip9nf8cPGDAz1wqggwAcstSjP+Tp5goyJeVizaZl7dORXbsAHWNbXy2APfDBoQ==
+  dependencies:
+    "@lion/core" "0.6.0"
+    "@lion/field" "0.13.0"
+    "@lion/validate" "0.10.0"
+
+"@lion/form@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@lion/form/-/form-0.5.0.tgz#1c8aa1d1feae284d6dd9c86bf870c7d1e8637b9a"
+  integrity sha512-OFZX0hREgmL/mlNMN75tyZ/GksfxNRH/w6Zwqh9mB4doweGYC9tEiED3QrSy/s0taX+j6XjD8qhns7E/kpX6Pw==
+  dependencies:
+    "@lion/core" "0.6.0"
+    "@lion/fieldset" "0.11.0"
+
+"@lion/input@^0.5.22":
+  version "0.5.22"
+  resolved "https://registry.yarnpkg.com/@lion/input/-/input-0.5.22.tgz#0ee1f0de8e0331f5fcca01233338df573c5bbafd"
+  integrity sha512-025TdHjxaclM1elVLQIxBotTtb27D2IyHrIA/tU9swITQk+Xk3kRMQBbmIgXMpTjGd1Quezb03c5Kqo+encK5A==
+  dependencies:
+    "@lion/core" "0.5.2"
+    "@lion/field" "0.12.2"
+
+"@lion/localize@0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@lion/localize/-/localize-0.10.0.tgz#f3608baeb9ae65ac4e0c3efdd6208208220a6153"
+  integrity sha512-oAy07yvNkFlsMxW3TBwrHvj1QEcjVDJ50vazuekzpc0M6v9c+00/6Y3U3TnH/H5V5qjKmOHnfhqYZoVqkmaqhA==
+  dependencies:
+    "@bundled-es-modules/message-format" "6.0.4"
+    "@lion/core" "0.6.0"
+    singleton-manager "1.0.0"
+
+"@lion/localize@0.9.2":
+  version "0.9.2"
+  resolved "https://registry.yarnpkg.com/@lion/localize/-/localize-0.9.2.tgz#96c053a87aae62976e4f8d9e93bccf970fe28dab"
+  integrity sha512-h0rF/b/DFuiulun/Zws8XXCUwcoRLympwFPrp4l1Ukhd9Rih4CvLYpKiCz2Rz06S7vy2CmXl+KNgqci3TegzUQ==
+  dependencies:
+    "@bundled-es-modules/message-format" "6.0.4"
+    "@lion/core" "0.5.2"
+
+"@lion/validate@0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@lion/validate/-/validate-0.10.0.tgz#ea02b5b82c1f0459b2f36a633b7a2e4ccc07be45"
+  integrity sha512-+h/NLADsygJK16iMvneh79xQpPDxoNGq/TY9Ov2QBqxrf8dDJK919BJDIEYpZiq+SD18d0P2bVS+ZQlt8Sw6rg==
+  dependencies:
+    "@lion/core" "0.6.0"
+    "@lion/localize" "0.10.0"
+
+"@lion/validate@0.9.2":
+  version "0.9.2"
+  resolved "https://registry.yarnpkg.com/@lion/validate/-/validate-0.9.2.tgz#287e7646929bc47b832ea05b8d3d2a9185d0ec74"
+  integrity sha512-m8a+L6BWh2aD1QEL5BPLSywW0PcCFrukmQ6EqALBEoU7yoE4fX9Gbj1235ejV0Fw3GYHEIaGiAnvqHt+BZf72w==
+  dependencies:
+    "@lion/core" "0.5.2"
+    "@lion/localize" "0.9.2"
 
 "@mdjs/core@^0.2.0":
   version "0.2.0"
@@ -1019,7 +1125,7 @@
     "@open-wc/semantic-dom-diff" "^0.13.16"
     "@types/chai" "^4.1.7"
 
-"@open-wc/dedupe-mixin@^1.2.17":
+"@open-wc/dedupe-mixin@^1.2.1", "@open-wc/dedupe-mixin@^1.2.17":
   version "1.2.17"
   resolved "https://registry.yarnpkg.com/@open-wc/dedupe-mixin/-/dedupe-mixin-1.2.17.tgz#50fb903fc8785639487d7987caae45d7bba08ec7"
   integrity sha512-9A3WohqNxEloJa4y1DuBL5zH12cNRNW1vsrkiaLMnOGuQdhibs2XY1oliudsKpvIeNjDXRVRPUdIIzn65BypCw==
@@ -1110,7 +1216,7 @@
     "@open-wc/rollup-plugin-html" "^1.0.3"
     polyfills-loader "^1.5.7"
 
-"@open-wc/scoped-elements@^1.1.1":
+"@open-wc/scoped-elements@^1.0.3", "@open-wc/scoped-elements@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@open-wc/scoped-elements/-/scoped-elements-1.1.1.tgz#732744dac4d029ffacdeb169d85855714eda9d0c"
   integrity sha512-Fx9bFOA14xGeNFQpSeyp6GmqW1vJyETr1qlem9pDS3hlK/HpWUtoBRAPyo4yexjY+aeSsenUeAYDXzPWQgeWXw==
@@ -5034,14 +5140,14 @@ listr@^0.14.2:
     p-map "^2.0.0"
     rxjs "^6.3.3"
 
-lit-element@^2.0.1, lit-element@^2.2.1, lit-element@^2.3.1:
+lit-element@^2.2.1, lit-element@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-2.3.1.tgz#73343b978fa1e73d60526c6bb6ad60f53a16c343"
   integrity sha512-tOcUAmeO3BzwiQ7FGWdsshNvC0HVHcTFYw/TLIImmKwXYoV0E7zCBASa8IJ7DiP4cen/Yoj454gS0qqTnIGsFA==
   dependencies:
     lit-html "^1.1.1"
 
-lit-html@^1.0.0, lit-html@^1.1.1:
+lit-html@^1.0.0, lit-html@^1.1.1, lit-html@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-1.2.1.tgz#1fb933dc1e2ddc095f60b8086277d4fcd9d62cc8"
   integrity sha512-GSJHHXMGLZDzTRq59IUfL9FCdAlGfqNp/dEa7k7aBaaWD+JKaCjsAk9KYm2V12ItonVaYx2dprN66Zdm1AuBTQ==
@@ -6875,6 +6981,11 @@ simple-git@^1.85.0:
   integrity sha512-xauHm1YqCTom1sC9eOjfq3/9RKiUA9iPnxBbrY2DdL8l4ADMu0jjM5l5lphQP5YWNqAL2aXC/OeuQ76vHtW5fg==
   dependencies:
     debug "^4.0.1"
+
+singleton-manager@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/singleton-manager/-/singleton-manager-1.0.0.tgz#f98539c9809895cb209d6908c78b088ec43711dc"
+  integrity sha512-7VVITgcGAxt+raPcALHkIgnPwkumZAVGp5zZGm6QjxXPg11d3+q4qF16gVsw1d+ypSzSisPr8O269zb3IF5AKA==
 
 sinon-chai@^3.3.0:
   version "3.5.0"
