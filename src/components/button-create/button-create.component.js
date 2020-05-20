@@ -8,33 +8,25 @@ export class TimerButton extends LionButton {
             css`
                 :host {
                     display: block;
-                    max-width: fit-content;
                     width: 100%;
                 }
                 .btn {
                     align-items: center;
-                    background-color: transparent;
+                    background-color: #3398db;
                     color: #ffffff;
                     display: flex;
                     font-size: 12px;
                     justify-content: center;
-                    max-width: fit-content;
-                    padding: 12px 24px;
+                    padding: 16px 8px;
                     text-transform: uppercase;
-                    transition: all 0.2s ease-in;
                 }
                 :host .btn:hover,
-                :host .btn:active,
-                :host(:hover) .btn, 
-                :host([hover]) .btn,
-                :host(:active) .btn, 
-                :host([active]) .btn  {
-                    background-color: #18bd09;
-                    background: #18bd09;
+                :host .btn:active {
+                    background-color: #2b81bb;
                 }
             `
         ]
     }
 
 }
-customElements.define('timer-button', TimerButton);
+customElements.define('timer-button-create', TimerButton);

@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element"
 import '../timer/timer.component.js'
-import '../button/button.component.js'
+import '../button-create/button-create.component.js'
 import '../input/input.component.js'
 
 class TimerMaker extends LitElement {
@@ -18,23 +18,7 @@ class TimerMaker extends LitElement {
     this.timerTitle = ''
     this.secondsToCount = 0
     this.timerIdGen = 0
-    this.activeTimers = [
-      {
-        title: 'Clock 0',
-        seconds: 3600,
-        id: 0
-      },
-      {
-        title: 'Clock 1',
-        seconds: 7200,
-        id: 1
-      },
-      {
-        title: 'Clock 2',
-        seconds: 10800,
-        id: 2
-      }
-    ]
+    this.activeTimers = []
   }
   
   static get styles() {
@@ -73,20 +57,41 @@ class TimerMaker extends LitElement {
   render() {
     return html`
       <div class="timer-maker">
-        <timer-input class="timer-maker__input" @keyup=${this.titleUpdated} placeholder="Timer Name" name="timer-title" type="text"></timer-input>
-        <timer-input class="timer-maker__input" @keyup=${this.secondsUpdated} placeholder="Amount of seconds" name="timer-count-seconds" type="number"></timer-input>
-        <timer-button @click=${this.createNewTimer}>Start Timer</timer-button>
+        <timer-input 
+          id="first-input-focus"
+          class="timer-maker__input" 
+          @keyup=${this.titleUpdated} 
+          placeholder="Timer Name" 
+          name="timer-title" 
+          type="text"
+        ></timer-input>
+
+        <timer-input 
+          class="timer-maker__input" 
+          @keyup=${this.secondsUpdated} 
+          placeholder="Amount of seconds" 
+          name="timer-count-seconds" 
+          type="number"
+        ></timer-input>
+
+        <timer-button-create 
+          @click=${this.createNewTimer}
+          part="create-timer-button"
+        >Start Timer</timer-button-create>
       </div>
 
       <div class="timers">
-      ${console.log(this.activeTimers)}
         ${this.activeTimers.map(
           (timer) => html`
             <timer-item 
               @timer-deleted=${this.removeTimer} 
+              @timer-tick=${this.timerTick} 
+              @timer-count-toggle=${this.toggleTimerCountDown}
               .timerID="${timer.id}" 
               .timerTitle="${timer.title}" 
               .secondsToCount="${timer.seconds}"
+              .isCountingDown="${timer.isCountingDown}"
+              .isCountComplete="${timer.isCountComplete}"
             ></timer-item>
           `
         )}
@@ -96,6 +101,10 @@ class TimerMaker extends LitElement {
 
   get timerInputs() {
     return this.shadowRoot.querySelectorAll('.timer-maker__input')
+  }
+
+  get firstInputToFocus() {
+    return this.shadowRoot.querySelector('#first-input-focus')
   }
 
   /* eslint no-param-reassign: ["error", { "props": false }] */
@@ -113,6 +122,18 @@ class TimerMaker extends LitElement {
     this.secondsToCount = event.target.value
   }
 
+  // updating the data model for each timer with the timers new value
+  timerTick(event) {
+    if (this.activeTimers[event.detail.id]) {
+      this.activeTimers[event.detail.id].seconds = event.detail.count
+    }
+  }
+
+  // toggle the pause and unpause of each timer
+  toggleTimerCountDown(event) {
+    this.activeTimers[event.detail.id].isCountingDown = event.detail.isCountingDown
+  }
+
   // remove timer is a custom event passed to each timer
   removeTimer(event) {
     // filter all active timers unless the ID matches the ID passed by the event
@@ -120,11 +141,21 @@ class TimerMaker extends LitElement {
   }
 
   createNewTimer() {
+    // early returns if the input have no values
+    if (this.timerTitle.length === 0) {
+      return
+    }
+    if (this.secondsToCount <= 0) {
+      return
+    }
+    
     // make a new timer for the active timers array
     const newTimer = {
       title: this.timerTitle,
       seconds: this.secondsToCount,
-      id: this.timerIdGen
+      id: this.timerIdGen,
+      isCountingDown: true,
+      isCountComplete: false
     }
     // this insures the timers always have a unique ID
     this.timerIdGen += 1
@@ -134,6 +165,7 @@ class TimerMaker extends LitElement {
     this.timerTitle = ''
     this.secondsToCount = 0
     this.resetInputs()
+    this.firstInputToFocus.focus()
   }
 }
 

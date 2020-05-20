@@ -7,20 +7,12 @@ class Timer extends LitElement {
       id: { type: Number },
 			timerTitle: { type: String },
       secondsToCount: { type: Number },
-      currentCount: { type: Number },
       isCountingDown: { type: Boolean },
       isCountComplete: { type: Boolean }
 		}
 	}
 
-	constructor() {
-    super()
-    this.isCountingDown = true
-    this.isCountComplete = false
-  }
-
   connectedCallback() {
-    this.currentCount = this.secondsToCount
     super.connectedCallback()
     this.updateCount()
   }
@@ -57,6 +49,12 @@ class Timer extends LitElement {
         margin: 20px 0;
         text-align: center;
       }
+
+      .timer__buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
     `
   }
 
@@ -77,7 +75,7 @@ class Timer extends LitElement {
   // returns seconds as HH-MM-SS user friendly format
   convertSecondsUI() {
     const date = new Date(null);
-    date.setSeconds(this.currentCount);
+    date.setSeconds(this.secondsToCount);
     const timeUI = date.toISOString().substr(11, 8);
     return timeUI
   }
@@ -85,12 +83,13 @@ class Timer extends LitElement {
   removeTimer() {
     // this custom event is passed from timer-maker to remove it from the array
     this.isCountingDown = true
-    this.dispatchEvent(new CustomEvent("timer-deleted", { detail: this.timerID }));
+    this.dispatchEvent(new CustomEvent("timer-deleted", { detail: this.timerID }))
   }
 
   toggleCountDown() {
-    // this pauses the timer
+    // this custom event is used to control the pause toggle
     this.isCountingDown = !this.isCountingDown
+    this.dispatchEvent(new CustomEvent("timer-count-toggle", { detail: {id: this.timerID, isCountingDown: this.isCountingDown} }))
   }
 
   updateCount() {
@@ -102,11 +101,12 @@ class Timer extends LitElement {
         
         // stop counter going below 0
         if (this.isCountingDown) {
-          this.currentCount = this.currentCount > 1 ? this.currentCount - 1 : 0;
+          this.secondsToCount = this.secondsToCount > 1 ? this.secondsToCount - 1 : 0;
+          this.dispatchEvent(new CustomEvent("timer-tick", { detail: {id: this.timerID, count: this.secondsToCount} }));
         }
 
         // when counter hit 0 it stops counting down
-        if (this.currentCount === 0) {
+        if (this.secondsToCount === 0) {
           this.isCountComplete = true
           clearInterval(timerTick)
         }
