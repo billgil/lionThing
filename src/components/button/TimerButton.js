@@ -1,5 +1,5 @@
-import { LionButton } from '@lion/button';
 import { css } from 'lit-element';
+import { LionButton } from '@lion/button';
 
 export class TimerButton extends LionButton {
   static get styles() {
@@ -32,8 +32,15 @@ export class TimerButton extends LionButton {
           background-color: #18bd09;
           background: #18bd09;
         }
+
+        /* TEST THAT CONDITIONAL STYLING IS NOT WORKING */
+        :host[type='button'],
+        [type='button'] .btn,
+        .timer__input .btn,
+        .timer__input {
+          border: 5px solid red;
+        }
       `,
     ];
   }
 }
-customElements.define('timer-button', TimerButton);

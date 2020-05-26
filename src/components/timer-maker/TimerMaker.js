@@ -1,10 +1,10 @@
 import { LitElement, html, css } from 'lit-element';
-import '../timer/timer.component.js';
-import '../button-create/button-create.component.js';
-import '../input/input.component.js';
 import '@lion/form/lion-form.js';
+import '../timer/timer-item.js';
+import '../button-create/button-create.component.js';
+import '../input/timer-input.js';
 
-class TimerMaker extends LitElement {
+export class TimerMaker extends LitElement {
   static get properties() {
     return {
       timerTitle: { type: String },
@@ -50,58 +50,6 @@ class TimerMaker extends LitElement {
         padding: 10px 50px 20px;
         width: 100%;
       }
-    `;
-  }
-
-  render() {
-    return html`
-      <div class="timer-maker">
-        <lion-form>
-          <form>
-            <lion-fieldset style="display:flex;" name="timer-details">
-              <timer-input
-                id="first-input-focus"
-                class="timer-maker__input"
-                @keyup=${this.titleUpdated}
-                placeholder="Timer Name"
-                name="timer-title"
-                type="text"
-                required
-              ></timer-input>
-
-              <timer-input
-                class="timer-maker__input"
-                @keyup=${this.secondsUpdated}
-                placeholder="Amount of seconds"
-                name="timer-count-seconds"
-                type="number"
-                required
-              ></timer-input>
-
-              <timer-button-create type="submit" @click=${this.createNewTimer}
-                >Start Timer</timer-button-create
-              >
-            </lion-fieldset>
-          </form>
-        </lion-form>
-      </div>
-
-      <div class="timers">
-        ${this.activeTimers.map(
-          timer => html`
-            <timer-item
-              @timer-deleted=${this.removeTimer}
-              @timer-tick=${this.timerTick}
-              @timer-count-toggle=${this.toggleTimerCountDown}
-              .timerID="${timer.id}"
-              .timerTitle="${timer.title}"
-              .secondsToCount="${timer.seconds}"
-              .isCountingDown="${timer.isCountingDown}"
-              .isCountComplete="${timer.isCountComplete}"
-            ></timer-item>
-          `
-        )}
-      </div>
     `;
   }
 
@@ -166,6 +114,7 @@ class TimerMaker extends LitElement {
       isCountingDown: true,
       isCountComplete: false,
     };
+
     // this insures the timers always have a unique ID
     this.timerIdGen += 1;
     this.activeTimers = [...this.activeTimers, newTimer];
@@ -176,6 +125,56 @@ class TimerMaker extends LitElement {
     this.resetInputs();
     this.firstInputToFocus.focus();
   }
-}
 
-customElements.define('timer-maker', TimerMaker);
+  render() {
+    return html`
+      <div class="timer-maker">
+        <lion-form>
+          <form>
+            <lion-fieldset style="display:flex;" name="timer-details">
+              <timer-input
+                id="first-input-focus"
+                class="timer-maker__input"
+                @keyup=${this.titleUpdated}
+                placeholder="Timer Name"
+                name="timer-title"
+                type="text"
+                required
+              ></timer-input>
+
+              <timer-input
+                class="timer-maker__input"
+                @keyup=${this.secondsUpdated}
+                placeholder="Amount of seconds"
+                name="timer-count-seconds"
+                type="number"
+                required
+              ></timer-input>
+
+              <timer-button-create type="submit" @click=${this.createNewTimer}
+                >Start Timer</timer-button-create
+              >
+            </lion-fieldset>
+          </form>
+        </lion-form>
+      </div>
+
+      <div class="timers">
+        ${this.activeTimers.map(
+          timer => html`
+            <timer-item
+              @timer-deleted=${this.removeTimer}
+              @timer-tick=${this.timerTick}
+              @timer-count-toggle=${this.toggleTimerCountDown}
+              .timerID="${timer.id}"
+              .timerTitle="${timer.title}"
+              .secondsToCount="${timer.seconds}"
+              .isCountingDown="${timer.isCountingDown}"
+              .isCountComplete="${timer.isCountComplete}"
+            ></timer-item>
+          `
+        )}
+      </div>
+    `;
+  }
+}
