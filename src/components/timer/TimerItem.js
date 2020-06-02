@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
+import { classMap } from 'lit-html/directives/class-map.js';
 import '../button/timer-button.js';
 import convertSecondsUI from '../../utils/convertSeconds.js';
 
@@ -51,6 +52,10 @@ export class Timer extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.updateCount();
+    this.styleClasses = {
+      'timer--active': this.isCountingDown,
+      'timer--ended': this.isCountComplete,
+    };
   }
 
   disconnectedCallback() {
@@ -104,14 +109,9 @@ export class Timer extends LitElement {
 
   render() {
     return html`
-      <div
-        class="timer ${this.isCountComplete ? 'timer--ended' : ''} ${this
-          .isCountingDown
-          ? 'timer--active'
-          : ''}"
-      >
+      <div class="timer ${classMap(this.styleClasses)}">
         <h2>${this.timerTitle}</h2>
-        <p>${convertSecondsUI(this.secondsToCount)}</p>
+        <p>${convertSecondsUI(this.secondsToCount, new Date(null))}</p>
 
         <div class="timer__buttons">
           <timer-button

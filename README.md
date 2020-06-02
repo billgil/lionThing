@@ -3,8 +3,10 @@ A test app using Lion components
 
 # Set up
 Pull down the project from *INSERT GUT HUB LINK*
-Install *LIST PACKAGES*
-Run `yarn start`
+Install packages `npm insall`
+Install lit Element `npm insall lit-element`
+Install lit HTML `npm insall lit-html`
+Run `npm start`
 
 # Description of functionality
 This app is a timer / countdown maker.

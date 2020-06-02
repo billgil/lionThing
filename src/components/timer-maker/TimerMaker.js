@@ -24,10 +24,12 @@ export class TimerMaker extends LitElement {
 
   static get styles() {
     return css`
+      * {
+        box-sizing: border-box;
+      }
       :host {
         display: block;
       }
-
       .timer-maker {
         display: block;
         margin: 0 auto;
@@ -35,13 +37,12 @@ export class TimerMaker extends LitElement {
         padding: 30px 20px;
         width: 100%;
       }
-
       timer-input {
         border: none;
-        margin: 0 16px 0 0;
+        margin: 0 0 16px 0;
+        max-width: 300px;
         outline: none;
       }
-
       .timers {
         display: flex;
         flex-wrap: wrap;
@@ -49,6 +50,11 @@ export class TimerMaker extends LitElement {
         max-width: 900px;
         padding: 10px 50px 20px;
         width: 100%;
+      }
+      lion-fieldset {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
       }
     `;
   }
@@ -131,7 +137,7 @@ export class TimerMaker extends LitElement {
       <div class="timer-maker">
         <lion-form>
           <form>
-            <lion-fieldset style="display:flex;" name="timer-details">
+            <lion-fieldset name="timer-details">
               <timer-input
                 id="first-input-focus"
                 class="timer-maker__input"

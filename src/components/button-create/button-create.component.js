@@ -8,6 +8,7 @@ export class TimerButton extends LionButton {
       css`
         :host {
           display: block;
+          max-width: 200px;
           width: 100%;
         }
         .btn {
@@ -17,7 +18,7 @@ export class TimerButton extends LionButton {
           display: flex;
           font-size: 12px;
           justify-content: center;
-          padding: 16px 8px;
+          padding: 12px 8px 13px;
           text-transform: uppercase;
         }
         :host .btn:hover,

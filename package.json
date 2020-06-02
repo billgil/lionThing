@@ -62,6 +62,7 @@
     "@lion/form": "^0.5.0",
     "@lion/input": "^0.5.22",
     "lit-element": "^2.3.1",
-    "lit-html": "^1.2.1"
+    "lit-html": "^1.2.1",
+    "yarn": "^1.22.4"
   }
 }

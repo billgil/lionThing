@@ -1,6 +1,5 @@
-// returns seconds as HH-MM-SS user friendly format
-const convertSecondsUI = secondsToCount => {
-  const date = new Date(null);
+// returns amount of seconds as HH-MM-SS user friendly format
+const convertSecondsUI = (secondsToCount, date) => {
   date.setSeconds(secondsToCount);
   const timeUI = date.toISOString().substr(11, 8);
   return timeUI;
